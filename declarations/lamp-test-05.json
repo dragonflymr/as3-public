@@ -10,7 +10,38 @@
          "remark": "LAMP based HTTP Service with Round-Robin Load Balancing",
          "lamptest01": {
              "class": "Tenant",
-             "A2": {
+             "A1": {
+                 "class": "Application",
+                 "template": "generic",
+                 "vlabLampTest01_vs": {
+                     "class": "Service_HTTP",
+                     "virtualAddresses": [
+                         "10.1.10.15"
+                     ],
+                     "pool": "lampTest01_pl"
+                 },
+                 "lampTest01_pl": {
+                     "class": "Pool",
+                     "monitors": [
+                         "http"
+                     ],
+                     "members": [
+                         {
+                             "servicePort": 80,
+                             "serverAddresses": [
+                                 "10.1.20.11"
+                             ]
+                         },
+                         {
+                             "servicePort": 80,
+                             "serverAddresses": [
+                                 "10.1.20.13"
+                             ]
+                         }
+                     ]
+                 }
+             },
+              "A2": {
                  "class": "Application",
                  "template": "generic",
                  "vlabLampTest02_vs": {
