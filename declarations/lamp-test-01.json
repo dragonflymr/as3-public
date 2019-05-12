@@ -10,10 +10,10 @@
          "remark": "LAMP based HTTP Service with Round-Robin Load Balancing",
          "lamp_01_test": {
              "class": "Tenant",
-             "lamp_test_01": {
+             "A1": {
                  "class": "Application",
                  "template": "http",
-                 "serviceMain": {
+                 "vlab-lamp-test-01.vs": {
                      "class": "Service_HTTP",
                      "virtualAddresses": [
                          "10.1.10.15"
