@@ -13,14 +13,14 @@
              "A1": {
                  "class": "Application",
                  "template": "http",
-                 "vlab-lamp-test-01.vs": {
+                 "vlabLampTest01_vs": {
                      "class": "Service_HTTP",
                      "virtualAddresses": [
                          "10.1.10.15"
                      ],
-                     "pool": "lamp-test-01.pl"
+                     "pool": "lampTest01_pl"
                  },
-                 "lamp-test-01.pl": {
+                 "lampTest01_pl": {
                      "class": "Pool",
                      "monitors": [
                          "http"
