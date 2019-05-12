@@ -1,0 +1,46 @@
+{
+     "class": "AS3",
+     "action": "deploy",
+     "persist": true,
+     "declaration": {
+         "class": "ADC",
+         "schemaVersion": "3.0.0",
+         "id": "urn:uuid:33045210-3ab8-4636-9b2a-c98d22ab915d",
+         "label": "LAMP Test",
+         "remark": "LAMP based HTTP Service with Round-Robin Load Balancing",
+         "lamptest01": {
+             "class": "Tenant",
+             "A1": {
+                 "class": "Application",
+                 "template": "generic",
+                 "vlabLampTest01_vs": {
+                     "class": "Service_HTTP",
+                     "virtualAddresses": [
+                         "10.1.10.15"
+                     ],
+                     "pool": "lampTest01_pl"
+                 },
+                 "lampTest01_pl": {
+                     "class": "Pool",
+                     "monitors": [
+                         "http"
+                     ],
+                     "members": [
+                         {
+                             "servicePort": 80,
+                             "serverAddresses": [
+                                 "10.1.20.11"
+                             ]
+                         },
+                         {
+                             "servicePort": 80,
+                             "serverAddresses": [
+                                 "10.1.20.12"
+                             ]
+                         }
+                     ]
+                 }
+             }
+         }
+     }
+ }
